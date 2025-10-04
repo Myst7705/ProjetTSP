@@ -1,0 +1,4 @@
+<map id="Graphe" name="Graphe">
+<area shape="rect" id="node1" title="Representation de la structure qui est manipule pour les calculs du TSP." alt="" coords="5,95,75,121"/>
+<area shape="rect" id="node2" href="$structPoint.html" title="Representation d&#39;un point dans un espace 2D." alt="" coords="13,5,67,32"/>
+</map>

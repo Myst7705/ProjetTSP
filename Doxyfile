@@ -1,0 +1,16 @@
+PROJECT_NAME           = "TSP Project"
+OUTPUT_DIRECTORY       = /home/otikiri/ProjetTSP/doc
+INPUT                  = README.md src
+FILE_PATTERNS          = *.c *.h
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+GENERATE_LATEX         = YES
+GENERATE_HTML          = YES
+QUIET                  = NO
+USE_MDFILE_AS_MAINPAGE = README.md
+HAVE_DOT               = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+HTML_OUTPUT            = html
+LATEX_OUTPUT           = latex
+
