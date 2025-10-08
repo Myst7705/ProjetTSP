@@ -26,13 +26,13 @@ typedef struct
 }Graphe;
 
 /**  
-* @struct Tournes
+* @struct Tournee
 * @brief Representation d'une tournee de visite de chaque point
 */
 typedef struct 
 {
-    int* ord_point_vis;
+    Point* ord_point_vis;
     int size; 
-}Tournes;
+}Tournee;
 
 #endif
