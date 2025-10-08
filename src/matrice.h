@@ -5,12 +5,18 @@ typedef struct sMatrice* Matrice;
 
 typedef double (*DistanceFun)(Point p1, Point p2);
 
-Matrice creerMatrice(int);
+Matrice createNewMat();
 
-void printMatrice(Matrice Matrice,int size);
+Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun);
 
-void freeMatrice(Matrice* pointeurMatrice);
+Matrice createMatriceFromGraphe(Graphe g,DistanceFun);
 
-int getLongueur(Matrice Matrice ,Point p1 ,Point p2);
+void freeMatrice(Matrice Matrice);
+
+double getDistance(Matrice mat, Point p1, Point p2);
+
+void printMatrice(const Matrice mat);
+
+void freeMatrice(Matrice mat);
 
 void mapMatrice();

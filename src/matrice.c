@@ -15,7 +15,9 @@ typedef struct sMatrice
 {
     int size;
     Node* head;
-}sMatrice;
+};
+
+
 
 Matrice createNewMat() {
     Matrice newMat = (Matrice)malloc(sizeof(sMatrice));
@@ -25,7 +27,7 @@ Matrice createNewMat() {
     }
     newMat->size = 1;
 
-    newMat->head = (Node*)malloc(sizeof(Node))
+    newMat->head = (Node*)malloc(sizeof(Node));
     if (newMat->head == NULL)
     {
         printf("Erreur d'allocation mémoire pour le noeud.\n");
@@ -46,7 +48,7 @@ Matrice createNewMat() {
     return newMat;
 }
 
-Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun) {
+Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun dist) {
 
     if (mat==NULL)
     {
@@ -70,7 +72,7 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun) {
 
     // Calculer la ligne avec la fonction de distance donnee
     for (int i = 0; i < size; i++) {
-        newNode->list[i] = Distancefun(p,g->point[i]);  // Exemple de valeur
+        newNode->list[i] = dist(p,g->point[i]);  // Exemple de valeur
     }
 
     newNode->next = NULL;   // Le node suivant est NULL
@@ -80,19 +82,19 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun) {
     }
     current->next = newNode;  // Ajouter le nouveau nœud à la fin
 
-    mat->size += 1;
+    mat->size++;
 
     return mat;
     
 }
 
 
-Matrice createMatriceFromGraphe(Graphe g,DistanceFun) {
+Matrice createMatriceFromGraphe(Graphe g,DistanceFun dist) {
     Point* Listpoint = g->point;
     Matrice mat = NULL;
     for (int i = 0; i < g->dimension; i++)
     {
-        mat = addPointToMatrice(mat,Listpoint[i],g,DistanceFun);
+        mat = addPointToMatrice(mat,Listpoint[i],g,dist);
     }
     
     return mat;
@@ -103,6 +105,9 @@ Matrice createMatriceFromGraphe(Graphe g,DistanceFun) {
 
 
 void freeMatrice(Matrice Matrice) {
+
+    if (!Matrice) return;
+
     Node* current = Matrice->head;
     while (current != NULL) {
         Node* temp = current;
@@ -110,11 +115,22 @@ void freeMatrice(Matrice Matrice) {
         current = current->next;
         free(temp);  // Libérer le nœud
     }
+    free(Matrice);
 }
 
-int getDistance(Matrice Matrice ,Point p1 ,Point p2){
+double getDistance(Matrice Matrice ,Point p1 ,Point p2){
+    if (!Matrice || m->size <= 0) return 0.0;
+
     int i = p1->id - 1;
     int j = p2->id - 1;
+
+    if (i < 0 || j < 0 || i >= Matrice->size || j >= Matrice->size) {
+        fprintf(stderr, "getDistance: index out of bounds (i=%d, j=%d, size=%d)\n", i, j, m->size);
+        return 0.0;
+    }
+
+    int r = (i > j) ? i : j;
+    int c = (i > j) ? j : i;
 
     Node* currentNode = Matrice->head;   
     for (int k = 0; k < i; k++)
@@ -125,3 +141,17 @@ int getDistance(Matrice Matrice ,Point p1 ,Point p2){
     return List[j];
 }
 
+
+
+void printMatrice(const Matrice mat) {
+    if (!m) { printf("(null)\n"); return; }
+
+    Node* currentNode = mat->head;
+
+    for (int i = 0; i < m->size; ++i,currentNode=currentNode->next) {
+        for (int j = 0; j < m->size; ++j) {
+            printf(" %f ",currentNode->list[j]);
+        }
+        printf("\n");
+    }
+}
