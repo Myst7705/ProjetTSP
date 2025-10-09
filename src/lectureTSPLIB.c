@@ -146,21 +146,3 @@ Graphe* read_TSPLIB (const char *fichier) {
 
     return g;
 }
-
-
-
-int main() {
-    Graphe* g = read_TSPLIB("jeudedonnees/fake5.tsp");
-    if (!g) return 1;
-
-    printf("Nom: %s\n", g->nom);
-    printf("Type_EDGE: %s\n", g->type_edge);
-    printf("Dimension: %d\n", g->dimension);
-
-    for (int i = 0; i < g->dimension; i++) {
-        printf("%d: (%lf, %lf)\n", g->point[i].id, g->point[i].x, g->point[i].y);
-    }
-
-    free_graphe(g);
-    return 0;
-}
