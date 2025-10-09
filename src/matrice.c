@@ -23,7 +23,7 @@ Matrice createNewMat() {
     Matrice newMat = (Matrice)malloc(sizeof(sMatrice));
     if (!newMat) {
         printf("Erreur d'allocation mémoire pour le noeud.\n");
-        exit(1);
+        return NULL;
     }
     newMat->size = 1;
 
@@ -31,14 +31,17 @@ Matrice createNewMat() {
     if (newMat->head == NULL)
     {
         printf("Erreur d'allocation mémoire pour le noeud.\n");
-        exit(1);
+        free(newMat);
+        return NULL;
     }
     
     newMat->head->list = (double*)malloc(sizeof(double));
     if (newMat->head->list == NULL)
     {
         printf("Erreur d'allocation mémoire pour le noeud.\n");
-        exit(1);
+        free(newMat->head);
+        free(newMat);
+        return NULL;
     }
 
     newMat->head->list[0] = 0;
@@ -59,7 +62,7 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun dist) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
         printf("Erreur d'allocation mémoire pour le node.\n");
-        exit(1);
+        return NULL;
     }
 
     // Allouer de la mémoire pour la liste dans ce node
@@ -67,7 +70,8 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun dist) {
 
     if (newNode->list == NULL) {
         printf("Erreur d'allocation mémoire pour la liste.\n");
-        exit(1);
+        free(newNode);
+        return NULL;
     }
 
     // Calculer la ligne avec la fonction de distance donnee
@@ -149,7 +153,7 @@ void printMatrice(const Matrice mat) {
     Node* currentNode = mat->head;
 
     for (int i = 0; i < mat->size; ++i,currentNode=currentNode->next) {
-        for (int j = 0; j < mat->size; ++j) {
+        for (int j = 0; j <= i; ++j) {
             printf(" %f ",currentNode->list[j]);
         }
         printf("\n");
