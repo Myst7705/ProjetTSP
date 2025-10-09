@@ -6,9 +6,10 @@
 double calcul_poids_tournee(Tournee* tournee, double (*calc_dist)(Point, Point)){
     int distance_totale = 0;
     
-    for (int i = 0; i < (tournee->size) - 1; i++){
+    for (int i = 0; i < (tournee->size)-1 ; i++){
         distance_totale += (*calc_dist)(tournee->ord_point_vis[i], tournee->ord_point_vis[i+1]);
     }
+    distance_totale+=(*calc_dist)(tournee->ord_point_vis[tournee->size-1],tournee->ord_point_vis[0]);
     return distance_totale;
 }
 
@@ -50,15 +51,8 @@ double calc_dist_att(Point a, Point b){
     double xd = a.x - b.x;
     double yd = a.y - b.y;
     double rij = sqrt( (xd*xd + yd*yd) / 10.0);
-    double tij = nearbyint(rij);
-    double dij = 0;
+    return nearbyint(rij+0.5);
 
-    if (tij < rij){
-        dij = tij + 1;
-    } else{
-        dij = tij;
-    }
-    return dij;
 }
 
 

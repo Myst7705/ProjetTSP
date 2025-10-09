@@ -20,4 +20,6 @@ Graphe* read_TSPLIB (const char *fichier);
 Tournee * createTourne(Graphe *g);
 
 char * toStringArray(Tournee T);
+
+void detruireTournee(Tournee * t);
 #endif

@@ -15,7 +15,6 @@ void free_graphe(Graphe* g) {
     // libère les points
     if (g->point)
         free(g->point);
-
     if (g->matrice_du_test) {
         //Partie 0 pas encore besoin de regarder le cas matrice
         fprintf(stderr,"Erreur: le cas matrice n'est pas encore implémentée\n");
@@ -165,11 +164,16 @@ char * toStringArray(Tournee T){
         strcat(str,tmp);
         if (i < (T.size-1))
         {
-            strcat(str," , " );
+            strcat(str,"," );
         }
     }
     strcat(str,"]");
     return str; 
 }
 
-
+void detruireTournee(Tournee *t){
+    if(!t) return;
+    free(t->ord_point_vis);
+    free(t);
+    t = NULL; 
+}
