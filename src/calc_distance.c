@@ -1,5 +1,7 @@
 #include "calc_distance.h"
 #include <math.h>
+#include <stdio.h> 
+#include <stdlib.h> 
 
 double calcul_poids_tournee(Tournee* tournee, double (*calc_dist)(Point, Point)){
     int distance_totale = 0;
@@ -58,3 +60,5 @@ double calc_dist_att(Point a, Point b){
     }
     return dij;
 }
+
+

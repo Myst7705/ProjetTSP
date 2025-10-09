@@ -8,9 +8,6 @@
 
 #define LINE_LEN 256
 
-
-
-
 void free_graphe(Graphe* g) {
     //si g = null alors rien à faire
     if (!g) return;
@@ -27,12 +24,6 @@ void free_graphe(Graphe* g) {
     // libère la structure elle-même
     free(g);
 }
-
-
-
-
-
-
 
 Graphe* read_TSPLIB (const char *fichier) {
     //Ouverture du fichier 
@@ -146,3 +137,39 @@ Graphe* read_TSPLIB (const char *fichier) {
 
     return g;
 }
+
+Tournee * createTourne(Graphe * g){
+    Tournee * t = malloc(sizeof(Tournee));
+    if(!t){
+        return NULL;
+    }
+    int size = g->dimension;
+    t->size = size;
+    t->ord_point_vis = malloc(sizeof(Point)*size);
+    for (int i = 0; i < size; i++)
+    {
+        t->ord_point_vis[i] = g->point[i];
+    }
+    return t;    
+}
+
+char * toStringArray(Tournee T){
+    char *str = malloc(512); // allocate on heap
+    if (!str) return NULL;   // check malloc success
+    str[0] = '\0';
+    strcat(str,"[");
+    for (int i = 0; i < T.size; i++)
+    {
+        char tmp[10];
+        sprintf(tmp,"%d",T.ord_point_vis[i].id);
+        strcat(str,tmp);
+        if (i < (T.size-1))
+        {
+            strcat(str," , " );
+        }
+    }
+    strcat(str,"]");
+    return str; 
+}
+
+

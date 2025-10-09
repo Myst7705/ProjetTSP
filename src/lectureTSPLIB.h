@@ -1,5 +1,5 @@
-#ifndef STRUCTURE_H
-#define STRUCTURE_H
+#ifndef LECTURETSP_H
+#define LECTURETSP_H
 
 #include "struct.h"
 
@@ -17,4 +17,7 @@ void free_graphe(Graphe* g);
  */
 Graphe* read_TSPLIB (const char *fichier);
 
+Tournee * createTourne(Graphe *g);
+
+char * toStringArray(Tournee T);
 #endif

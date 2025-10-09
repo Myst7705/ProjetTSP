@@ -14,7 +14,6 @@
  */
 double calcul_poids_tournee(Tournee* tournee, double (*calc_dist)(Point, Point));
 
-
 /**
  * @param Point a
  * @param Point b
@@ -35,6 +34,5 @@ double calc_dist_geo(Point a, Point b);
  * @brief Calcul la distance ATT entre points
  */
 double calc_dist_att(Point a, Point b);
-
 
 #endif

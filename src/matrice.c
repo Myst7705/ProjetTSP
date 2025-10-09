@@ -1,7 +1,6 @@
 #include "matrice.h"
 #include "struct.h"
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,7 +15,6 @@ typedef struct sMatrice
     int size;
     Node* head;
 }sMatrice;
-
 
 
 Matrice createNewMat() {
@@ -92,7 +90,6 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun dist) {
     
 }
 
-
 Matrice createMatriceFromGraphe(Graphe g,DistanceFun dist) {
     Point* Listpoint = g.point;
     Matrice mat = NULL;
@@ -100,13 +97,8 @@ Matrice createMatriceFromGraphe(Graphe g,DistanceFun dist) {
     {
         mat = addPointToMatrice(mat,Listpoint[i],g,dist);
     }
-    
     return mat;
-
 }
-
-
-
 
 void freeMatrice(Matrice Matrice) {
 
