@@ -15,7 +15,7 @@ typedef struct sMatrice
 {
     int size;
     Node* head;
-};
+}sMatrice;
 
 
 
@@ -71,8 +71,8 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun dist) {
     }
 
     // Calculer la ligne avec la fonction de distance donnee
-    for (int i = 0; i < size; i++) {
-        newNode->list[i] = dist(p,g->point[i]);  // Exemple de valeur
+    for (int i = 0; i < mat->size; i++) {
+        newNode->list[i] = dist(p,g.point[i]);  // Exemple de valeur
     }
 
     newNode->next = NULL;   // Le node suivant est NULL
@@ -90,9 +90,9 @@ Matrice addPointToMatrice(Matrice mat,Point p,Graphe g,DistanceFun dist) {
 
 
 Matrice createMatriceFromGraphe(Graphe g,DistanceFun dist) {
-    Point* Listpoint = g->point;
+    Point* Listpoint = g.point;
     Matrice mat = NULL;
-    for (int i = 0; i < g->dimension; i++)
+    for (int i = 0; i < g.dimension; i++)
     {
         mat = addPointToMatrice(mat,Listpoint[i],g,dist);
     }
@@ -119,13 +119,13 @@ void freeMatrice(Matrice Matrice) {
 }
 
 double getDistance(Matrice Matrice ,Point p1 ,Point p2){
-    if (!Matrice || m->size <= 0) return 0.0;
+    if (!Matrice || Matrice->size <= 0) return 0.0;
 
-    int i = p1->id - 1;
-    int j = p2->id - 1;
+    int i = p1.id - 1;
+    int j = p2.id - 1;
 
     if (i < 0 || j < 0 || i >= Matrice->size || j >= Matrice->size) {
-        fprintf(stderr, "getDistance: index out of bounds (i=%d, j=%d, size=%d)\n", i, j, m->size);
+        fprintf(stderr, "getDistance: index out of bounds (i=%d, j=%d, size=%d)\n", i, j, Matrice->size);
         return 0.0;
     }
 
@@ -133,23 +133,23 @@ double getDistance(Matrice Matrice ,Point p1 ,Point p2){
     int c = (i > j) ? j : i;
 
     Node* currentNode = Matrice->head;   
-    for (int k = 0; k < i; k++)
+    for (int k = 0; k < r; k++)
     {
         currentNode = currentNode->next;
     }
-    double* List = currentNode->List;
-    return List[j];
+    double* List = currentNode->list;
+    return List[c];
 }
 
 
 
 void printMatrice(const Matrice mat) {
-    if (!m) { printf("(null)\n"); return; }
+    if (!mat) { printf("(null)\n"); return; }
 
     Node* currentNode = mat->head;
 
-    for (int i = 0; i < m->size; ++i,currentNode=currentNode->next) {
-        for (int j = 0; j < m->size; ++j) {
+    for (int i = 0; i < mat->size; ++i,currentNode=currentNode->next) {
+        for (int j = 0; j < mat->size; ++j) {
             printf(" %f ",currentNode->list[j]);
         }
         printf("\n");

@@ -1,6 +1,8 @@
 #ifndef MATRICE_H
 #define MATRICE_H
 
+#include "struct.h"
+
 typedef struct sMatrice* Matrice;
 
 typedef double (*DistanceFun)(Point p1, Point p2);
@@ -20,3 +22,5 @@ void printMatrice(const Matrice mat);
 void freeMatrice(Matrice mat);
 
 void mapMatrice();
+
+#endif
