@@ -3,33 +3,77 @@
 #include <stdio.h> 
 #include <stdlib.h>
 
+void affichage_help(){
+    printf("Utilisation :\n");
+    printf("> %s./bin/tsp -f test/FICHIER [-c,-bf] %s: pour faire fonctionner le code\n",GREEN,NORMAL);
+    printf("> %s./bin/tsp -h %s: pour savoir comment utiliser le code\n",GREEN,NORMAL);
+    printf("> %ssource venv/bin/activate %s: a activer dans le repertoire python, elle va nous permettre de faire fonctionner le sous-environnement python \n",GREEN,NORMAL);
+}
+
+
+void affichage_erreur(){
+    printf("Utilisation :\n");
+    printf("> %s./bin/tsp -f test/FICHIER [-c,-bf] %s: pour faire fonctionner le code\n",RED,NORMAL);
+    printf("> %s./bin/tsp -h %s: pour savoir comment utiliser le code\n",RED,NORMAL);
+}
+
+void affichage(Graphe * g,char * tourneString,double resultat_calc,double temps,char * methode_calc){
+    printf("Instance ; Méthode ; Temps CPU (sec) ; Longueur ; Tour\n");
+    printf("%s ; %s ; %f ; %f ; %s\n", g->nom, methode_calc, 0.0, resultat_calc, tourneString); 
+}
 
 int main(int argc,char *argv[]){
-    if (argc != 4||strcmp(argv[1],"-f")!=0)
+    if (argc ==2)
     {
-        //printf("%sUtilisation : ./bin/tsp -f test/FICHIER -c\n%s",RED,NORMAL); 
-        return 1;
-    }
-    char * file_name = argv[2];
-
-    Graphe * g = read_TSPLIB(file_name);
-
-    Tournee * t = createTourne(g);
-    char * chRead = argv[3];
-    if (strcmp(chRead,"-c")==0)
-    {
-        double resCanonicalTurn = calcul_poids_tournee(t,calc_dist_att);
-        char * turnString = toStringArray(*t);
-        printf("Tour %s %s %f %f %s\n", g->nom, "canonical", 0.0, resCanonicalTurn, turnString);
-        free(turnString);
-    }else if(strcmp(chRead,"-bf")==0){ 
-        printf("TODO\n");
-    }else{ 
-        detruireTournee(t);
-        free_graphe(g);
-        return 1; 
+        if (strcmp(argv[1],"-h")==0)
+        {  
+            //affichage_help();
+            return 0;
+        }else{
+            //affichage_erreur();
+            return 1; 
+        }
     }
     
+    if (argc != 4||strcmp(argv[1],"-f")!=0)
+    {
+        //affichage_erreur();
+        return 1;
+    }
+
+    char * file_name = argv[2];
+
+    //CREATION DE L'INSTANCE LUE
+    Graphe * g = read_TSPLIB(file_name);
+    if (!g){
+        return 2;
+    }
+    
+    Tournee * t = createTourne(g);
+    
+    // INIT CALCUL DE FONCTION DE CALCUL DE BASE 
+    DistanceFun calc_dist = calc_dist_att;
+    if (strcmp(g->type_edge,"GEO")==0)
+    {
+        calc_dist = calc_dist_geo;
+    }else if(strcmp(g->type_edge,"EUC_2D")==0){ 
+        calc_dist = calc_dist_eucl2d;
+    }
+    
+
+    char * chRead = argv[3];
+    if (strcmp(chRead,"-c")==0) //TOURNEE CANNONIQUE
+    {
+        double resCanonicalTurn = calcul_poids_tournee(t,calc_dist);
+        char * turnString = toStringArray(*t);
+        //printf("Tour %s %s %f %f %s\n", g->nom, "canonical", 0.0, resCanonicalTurn, turnString);
+        affichage(g,turnString,resCanonicalTurn,0.0,chRead);
+        free(turnString);
+    }else if(strcmp(chRead,"-bf")){ //BRUTE FORCE
+        printf("TODO : brute force"); 
+    }else{
+        return 1;
+    }
     detruireTournee(t);
     free_graphe(g);
     return 0;

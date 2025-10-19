@@ -35,4 +35,6 @@ typedef struct
     int size; 
 }Tournee;
 
+typedef double (*DistanceFun)(Point, Point);
+
 #endif
