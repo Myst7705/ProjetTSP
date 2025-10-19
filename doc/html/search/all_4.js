@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['matrice_5fdu_5ftest_4',['matrice_du_test',['../structGraphe.html#a541cbf09fc16b2bb9744103ab8daac28',1,'Graphe']]]
+  ['free_5fgraphe_17',['free_graphe',['../lectureTSPLIB_8c.html#a9f9e3c694319d74371adca5948038e4c',1,'free_graphe(Graphe *g):&#160;lectureTSPLIB.c'],['../lectureTSPLIB_8h.html#a9f9e3c694319d74371adca5948038e4c',1,'free_graphe(Graphe *g):&#160;lectureTSPLIB.c']]],
+  ['freematrice_18',['freeMatrice',['../matrice_8c.html#a1f28309512b940f720c96271d77d5878',1,'freeMatrice(Matrice Matrice):&#160;matrice.c'],['../matrice_8h.html#a1f28309512b940f720c96271d77d5878',1,'freeMatrice(Matrice Matrice):&#160;matrice.c']]]
 ];

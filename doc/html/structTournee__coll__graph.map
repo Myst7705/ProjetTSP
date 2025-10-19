@@ -1,0 +1,4 @@
+<map id="Tournee" name="Tournee">
+<area shape="rect" id="node1" title="Representation d&#39;une tournee de visite de chaque point." alt="" coords="5,95,79,121"/>
+<area shape="rect" id="node2" href="$structPoint.html" title="Representation d&#39;un point dans un espace 2D." alt="" coords="15,5,69,32"/>
+</map>

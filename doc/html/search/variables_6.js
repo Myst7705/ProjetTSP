@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['point_28',['point',['../structGraphe.html#a608f6361082f98068487c958d07b87d6',1,'Graphe']]]
+  ['next_97',['next',['../structNode.html#af67b110ca1a258b793bf69d306929b22',1,'Node']]],
+  ['nom_98',['nom',['../structGraphe.html#a21312064b3fa128da98905e9b5dd71db',1,'Graphe']]]
 ];

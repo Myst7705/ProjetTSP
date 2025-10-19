@@ -1,0 +1,13 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,233,60,260"/>
+<area shape="rect" id="node2" href="$main_8c.html#ac0bbe2b7d40b6f299d4e71cb1187fcfa" title=" " alt="" coords="146,5,229,32"/>
+<area shape="rect" id="node3" href="$calc__distance_8c.html#ac6b7da1dc297b93e5316b68f0401d39d" title="Calcul la distance ATT entre points." alt="" coords="135,56,239,83"/>
+<area shape="rect" id="node4" href="$calc__distance_8c.html#a9535028b3a5d93b4a5d515e577d153a0" title="Calcul la distance euclidienne en 2D entre points." alt="" coords="123,107,252,133"/>
+<area shape="rect" id="node5" href="$calc__distance_8c.html#a7084007a4746b0ec66964145fa2a6029" title="Calcul la distance geographique entre points." alt="" coords="132,157,243,184"/>
+<area shape="rect" id="node6" href="$calc__distance_8c.html#a941a8f33326e911c918d939714e6c82f" title="Calcul la distance totale d&#39;une tournee." alt="" coords="108,208,267,235"/>
+<area shape="rect" id="node7" href="$lectureTSPLIB_8c.html#a8cfebd1510e72983eb5bea4f13ddb308" title=" " alt="" coords="134,259,241,285"/>
+<area shape="rect" id="node8" href="$lectureTSPLIB_8c.html#a3a73abb56d66138429ed41b21570f644" title=" " alt="" coords="125,309,249,336"/>
+<area shape="rect" id="node9" href="$lectureTSPLIB_8c.html#a9f9e3c694319d74371adca5948038e4c" title="Libère un graphe allouée dynamiquement." alt="" coords="315,385,415,412"/>
+<area shape="rect" id="node10" href="$lectureTSPLIB_8c.html#a1a174a6a279fe4ec3f75915c03e935cf" title="Lit un fichier TSPLIB et crée un Graphe." alt="" coords="136,411,239,437"/>
+<area shape="rect" id="node11" href="$lectureTSPLIB_8c.html#a47a4df6ceebd46f6e9760ac6b38d3459" title=" " alt="" coords="133,461,241,488"/>
+</map>
