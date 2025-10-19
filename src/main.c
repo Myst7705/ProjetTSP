@@ -5,9 +5,7 @@
 
 
 int main(int argc,char *argv[]){
-
-    //./bin/tsp -f fichier -c
-    if (argc != 4||strcmp(argv[1],"-f")!=0||strcmp(argv[3],"-c")!=0)
+    if (argc != 4||strcmp(argv[1],"-f")!=0)
     {
         //printf("%sUtilisation : ./bin/tsp -f test/FICHIER -c\n%s",RED,NORMAL); 
         return 1;
@@ -16,25 +14,22 @@ int main(int argc,char *argv[]){
 
     Graphe * g = read_TSPLIB(file_name);
 
-    // printf("Printing value that's was read: \n");
-    // for (int i = 0; i < g->dimension; i++)
-    // {
-    //     Point p = g->point[i];
-    //     printf("[%d] value read -> x : %f y : %f\n",p.id,p.x,p.y);
-    // }
-    //printf("\n");
     Tournee * t = createTourne(g);
-    // printf("Printing value that's in a turn: \n");
-    // for (int i = 0; i < g->dimension; i++)
-    // {
-    //     Point p1 = t->ord_point_vis[i];
-    //     printf("[%d] value read -> x : %f y : %f\n",p1.id,p1.x,p1.y);
-    // }
-
-    double resCanonicalTurn = calcul_poids_tournee(t,calc_dist_att);
-    char * turnString = toStringArray(*t);
-    printf("Tour %s %s %f %f %s\n", g->nom, "canonical", 0.0, resCanonicalTurn, turnString);
-    free(turnString);
+    char * chRead = argv[3];
+    if (strcmp(chRead,"-c")==0)
+    {
+        double resCanonicalTurn = calcul_poids_tournee(t,calc_dist_att);
+        char * turnString = toStringArray(*t);
+        printf("Tour %s %s %f %f %s\n", g->nom, "canonical", 0.0, resCanonicalTurn, turnString);
+        free(turnString);
+    }else if(strcmp(chRead,"-bf")==0){ 
+        printf("TODO\n");
+    }else{ 
+        detruireTournee(t);
+        free_graphe(g);
+        return 1; 
+    }
+    
     detruireTournee(t);
     free_graphe(g);
     return 0;

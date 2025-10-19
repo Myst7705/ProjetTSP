@@ -16,7 +16,7 @@ Ce projet se base sur la problematique du "Travelling Saleman Probleme" ou TSP. 
 - ***make*** : dans le fichier de base (../ProjetTSP), va servir a creer l'exexutable du main.c
 - ***make clean*** : dans le fichier de base (../ProjectTSP), va servir a nettoyer les fichiers creer par le make
 - ***./bin/tsp -f <u> FICHIER </u> -c*** pour faire executer le programme. 
-
+- ***source venv/bin/activate*** pour activer le sous environnement python pour faire tester nos fonctions avec le code python
 ## Partie 0 
 
 La partie 0 concerne l'implementation des differents fonctions necessaires pour manipuler les fichiers de test et des fonctions de calculs de distance. 
