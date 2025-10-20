@@ -9,7 +9,7 @@
 #include "P1_fonctions.h"
 #include "matrice.h"
 
-
+typedef double (*DistanceCalc)(const Graphe* g, DistanceFun f, int i, int j, Matrice m);
 
 
 /* 
@@ -52,55 +52,70 @@ bool next_permutation(int array[], size_t length) {
 	return true;
 }
 
-double dist_ij(const Graphe* g, DistanceFun f, int i, int j) {
+
+
+double dist_ij(const Graphe* g, DistanceFun f, int i, int j, Matrice m) {
     if (i == j) return 0.0;
 
     return f(g->point[i], g->point[j]);
 }
 
+double dist_ij_mat(const Graphe* g, DistanceFun f, int i, int j, Matrice mat) {
+    if (i == j) return 0.0;
+
+    return getDistance(mat, g->point[i], g->point[j]);
+}
+
 /* perm = indices de points, len = nombre de points (N) */
-double tour_length_from_perm(const Graphe* g, DistanceFun f, const int* perm, int len) {
+double tour_length_from_perm(const Graphe* g, DistanceFun f, const int* perm, int len, DistanceCalc dist, Matrice mat) {
     double sum = 0.0;
     for (int k = 0; k < len - 1; ++k) {
-        sum += dist_ij(g, f, perm[k], perm[k+1]);
+        sum += dist(g, f, perm[k], perm[k+1], mat);
     }
     /* fermer la boucle */
-    sum += dist_ij(g, f, perm[len-1], perm[0]);
+    sum += dist(g, f, perm[len-1], perm[0], mat);
     return sum;
 }
 
-static void fill_tournee_from_perm(const Graphe* g, const int* perm, int n, Tournee* out) {
+int fill_tournee_from_perm(const Graphe* g, const int* perm, int n, Tournee* out) {
+    if (!out) return -1;
+
     out->size = n;
-    out->ord_point_vis = (Point*)malloc((size_t)n * sizeof(Point));
-    if (!out->ord_point_vis) { out->size = 0; return; }
-    if (g->est_matrice) {
+    Point tabPoints[n];
         for (int i = 0; i < n; ++i) {
             int idx = perm[i];
-            out->ord_point_vis[i].id = idx;
-            out->ord_point_vis[i].x  = g->matrice_du_test[idx][0];
-            out->ord_point_vis[i].y  = g->matrice_du_test[idx][1];
+            tabPoints[i] = g->point[idx]; /* copie */
         }
-    } else {
-        for (int i = 0; i < n; ++i) {
-            int idx = perm[i];
-            out->ord_point_vis[i] = g->point[idx]; /* copie */
-        }
-    }
+    out->ord_point_vis = tabPoints;
+
+    return 0;
 }
 
 
-int tsp_bruteforce(const Graphe* g, DistanceFun f, Tournee* outBest, double* outBestLen, Tournee* outWorst,double* outWorstLen) {
+
+int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance , Tournee* outBest, double* outBestLen, Tournee* outWorst,double* outWorstLen) {
     if (!g || g->dimension <= 0 || !outBest || !outBestLen) return -1;
     const int N = g->dimension;
 
-    /* VLA sur la pile : pas de malloc */
+    
+
+    /* initialisation */
     int perm[N];
     int bestPerm[N];
     int worstPerm[N];
 
-    /* initialisation : 0,1,2,... */
     for (int i = 0; i < N; ++i) perm[i] = i;
 
+    DistanceCalc dist = dist_ij;
+    Matrice mat = NULL;
+
+    if (faire_matrice_distance)
+    {
+        mat = createMatriceFromGraphe( (*g) , f );
+        dist = dist_ij_mat;
+
+    }
+    
     
 
     double bestLen ;
@@ -108,7 +123,7 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, Tournee* outBest, double* out
     
     /* évalue la permutation initiale (déjà triée) */
     
-        double L0 = tour_length_from_perm(g, f, perm, N);
+        double L0 = tour_length_from_perm(g, f, perm, N, dist, mat);
         bestLen = L0;
         worstLen = L0;
         memcpy(bestPerm, perm, (size_t)N * sizeof(int));
@@ -117,7 +132,7 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, Tournee* outBest, double* out
 
     /* boucle d'exploration des permutations */
     while (next_permutation(perm, N)) {
-        double L = tour_length_from_perm(g, f, perm, N);
+        double L = tour_length_from_perm(g, f, perm, N, dist, mat);
         if (L < bestLen) {
             bestLen = L;
             memcpy(bestPerm, perm, (size_t)N * sizeof(int));
