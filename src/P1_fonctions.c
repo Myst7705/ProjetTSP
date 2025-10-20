@@ -81,17 +81,14 @@ int fill_tournee_from_perm(const Graphe* g, const int* perm, int n, Tournee* out
     if (!out) return -1;
 
     out->size = n;
-    Point tabPoints[n];
-        for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) {
             int idx = perm[i];
-            tabPoints[i] = g->point[idx]; /* copie */
-        }
-    out->ord_point_vis = tabPoints;
-
+            out->ord_point_vis[i].id = (idx+1);
+            out->ord_point_vis[i].x = g->point[idx].x;
+            out->ord_point_vis[i].y = g->point[idx].y;
+    }
     return 0;
 }
-
-
 
 int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance , Tournee* outBest, double* outBestLen, Tournee* outWorst,double* outWorstLen) {
     if (!g || g->dimension <= 0 || !outBest || !outBestLen) return -1;

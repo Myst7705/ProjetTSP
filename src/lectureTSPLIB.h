@@ -17,7 +17,7 @@ void free_graphe(Graphe* g);
  */
 Graphe* read_TSPLIB (const char *fichier);
 
-Tournee * createTourne(Graphe *g);
+Tournee * createTourneCanonique(Graphe *g);
 
 char * toStringArray(Tournee T);
 

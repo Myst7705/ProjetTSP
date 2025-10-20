@@ -137,7 +137,7 @@ Graphe* read_TSPLIB (const char *fichier) {
     return g;
 }
 
-Tournee * createTourne(Graphe * g){
+Tournee * createTourneCanonique(Graphe * g){
     Tournee * t = malloc(sizeof(Tournee));
     if(!t){
         return NULL;

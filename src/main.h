@@ -5,7 +5,7 @@
 #include "matrice.h"
 #include "lectureTSPLIB.h"
 #include "calc_distance.h"
-
+#include "P1_fonctions.h"
 
 #define NORMAL "\x1B[0m"
 #define RED "\x1B[31m"

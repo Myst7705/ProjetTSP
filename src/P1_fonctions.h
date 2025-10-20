@@ -1,7 +1,7 @@
 #ifndef P1_FONCTIONS_H
 #define P1_FONCTIONS_H
 
-
+#include <stdbool.h>
 #include "struct.h"
 #include "P1_fonctions.h"
 #include "matrice.h"

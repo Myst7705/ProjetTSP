@@ -1,4 +1,3 @@
-../test/att10.tsp
-../test/att15.tsp
-../test/burma14.tsp 
-../test/berlin52.tsp
+../test/att5.tsp
+../test/burma5.tsp 
+../test/berlin5.tsp
