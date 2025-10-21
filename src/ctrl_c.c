@@ -29,5 +29,6 @@ void  INThandler(int sig)
           signal(SIGINT, INThandler);
      }
 
-     getchar(); // Get new line character
+     int tmp;
+     while ((tmp = getchar()) != EOF && tmp != '\n') { }
 }
