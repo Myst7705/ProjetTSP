@@ -1,10 +1,13 @@
+#define _POSIX_C_SOURCE 200809L
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <float.h>
+#include <signal.h>
 
+#include "ctrl_c.h"
 #include "struct.h"
 #include "P1_fonctions.h"
 #include "matrice.h"
@@ -17,6 +20,7 @@ double bestLen = 0.0;
 double worstLen = 0.0;
 char* permActuelle = NULL;
 char* bestPermString = NULL;
+
 
 
 /* 
@@ -101,8 +105,6 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
     if (!g || g->dimension <= 0 || !outBest || !outBestLen) return -1;
     const int N = g->dimension;
 
-    
-
     /* initialisation */
     int perm[N];
     int bestPerm[N];
@@ -121,24 +123,30 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
     }
     
     
-    
     /* évalue la permutation initiale (déjà triée) */
     /* Et la convertit en string */
     
-        double L0 = tour_length_from_perm(g, f, perm, N, dist, mat);
+    double L0 = tour_length_from_perm(g, f, perm, N, dist, mat);
 
-        permToString(perm, N, permActuelle);
-        bestLen = L0;
-        worstLen = L0;
-        memcpy(bestPerm, perm, (size_t)N * sizeof(int));
-        memcpy(worstPerm, perm, (size_t)N * sizeof(int));
-        permToString(bestPerm, N, bestPermString);
+    permToString(perm, N, permActuelle);
+    bestLen = L0;
+    worstLen = L0;
+    memcpy(bestPerm, perm, (size_t)N * sizeof(int));
+    memcpy(worstPerm, perm, (size_t)N * sizeof(int));
+    permToString(bestPerm, N, bestPermString);
     
 
     /* boucle d'exploration des permutations */
     while (next_permutation(perm, N)) {
+        sigset_t set, oldset, pending;
+
+        // Préparer l’ensemble contenant SIGINT
+        sigemptyset(&set);
+        sigaddset(&set, SIGINT); 
         permToString(perm, N, permActuelle);
+
         double L = tour_length_from_perm(g, f, perm, N, dist, mat);
+
         if (L < bestLen) {
             bestLen = L;
             memcpy(bestPerm, perm, (size_t)N * sizeof(int));
@@ -151,8 +159,13 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
             worstLen = L;
             memcpy(worstPerm, perm, (size_t)N * sizeof(int));
         }
-    }
 
+        sigprocmask(SIG_SETMASK, &oldset, NULL);
+        sigpending(&pending);
+        if (sigismember(&pending, SIGINT)) {
+            signal(SIGINT, INThandler);
+        }
+    }
 
     /* Remplir outBest (allocation unique faite ici) */
     fill_tournee_from_perm(g, bestPerm, N, outBest);

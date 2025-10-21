@@ -88,27 +88,28 @@ int main(int argc,char *argv[]){
         // Allocation memoire de la chaine de caractere permActuelle et bestPermString affichee dans ctrl_c
         bestPermString = malloc(512);
         permActuelle = malloc(512);
-        clock_t begin = clock();
+        
         void (*oldINT)(int) = signal(SIGINT, INThandler);
 
         if (oldINT == SIG_ERR){
             perror("Erreur assignement signal SIGINT\n");
             return 3;
         }
-
+        clock_t begin = clock();
         tsp_bruteforce(g,calc_dist,WITHOUT_MATRICE,best,&bestL,worst,&worstL);
+        clock_t end = clock();
         signal(SIGINT, oldINT);
 
-        clock_t end = clock();
+        
         free(permActuelle);
         free(bestPermString);
 
 
-        double timeCPU = (double)(end-begin);
+        int timeCPU = (int)(end-begin);
         char * bestString = toStringArray(*best);
         char * worstString = toStringArray(*worst);
-        printf("Tour %s %s %f %f %s\n", g->nom, "bf", timeCPU, bestL, bestString);
-        printf("Tour %s %s %f %f %s\n", g->nom, "bf", timeCPU, worstL, worstString);
+        printf("Tour %s %s %d %f %s\n", g->nom, "bf", timeCPU, bestL, bestString);
+        printf("Tour %s %s %d %f %s\n", g->nom, "bf", timeCPU, worstL, worstString);
     }else{
         return 1;
     }

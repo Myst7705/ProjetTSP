@@ -11,12 +11,11 @@ void  INThandler(int sig)
      char  c;
 
      signal(sig, SIG_IGN);
+
      printf("Vous avez appuye sur la touche Ctrl-C\n");
-     printf("Meilleure tournee:\n %s", bestPermString);
-     printf("Longueur de la meilleure tournee: %f\n", bestLen);
-     printf("Permutation actuelle: %s\n", permActuelle);
-
-
+     printf("Meilleure tournee: %s\n", bestPermString);
+     printf("Longueur de la meilleure tournee: %f \n", bestLen);
+     printf("Permutation actuelle: %s \n", permActuelle);
 
      printf("Voulez vous vraiment quitter? [y or n]\n");
      

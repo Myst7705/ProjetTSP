@@ -7,6 +7,7 @@
         "main.h": "c",
         "matrice.h": "c",
         "sstream": "c",
-        "ctrl_c.h": "c"
+        "ctrl_c.h": "c",
+        "signal.h": "c"
     }
 }
