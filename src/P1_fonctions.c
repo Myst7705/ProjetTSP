@@ -143,6 +143,7 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
         // Préparer l’ensemble contenant SIGINT
         sigemptyset(&set);
         sigaddset(&set, SIGINT); 
+        sigprocmask(SIG_BLOCK, &set, &oldset);
         permToString(perm, N, permActuelle);
 
         double L = tour_length_from_perm(g, f, perm, N, dist, mat);
