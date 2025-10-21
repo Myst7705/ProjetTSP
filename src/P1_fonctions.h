@@ -9,11 +9,18 @@
 #define WITH_MATRICE 1
 #define WITHOUT_MATRICE 0
 
+// Permet l'acces dans differents modules (ex: ctrl_c)
+extern double bestLen ;
+extern double worstLen;
+extern char* permActuelle;
+extern char* bestPermString;
+
 int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance,
                     Tournee* outBest, double* outBestLen, Tournee* outWorst, double* outWorstLen);
 
 
 typedef double (*DistanceCalc)(const Graphe* g, DistanceFun f, int i, int j, Matrice m);
+
 
 
 #endif

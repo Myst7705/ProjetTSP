@@ -4,6 +4,10 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h> 
+#include <signal.h>
+#include "ctrl_c.h"
+#include "P1_fonctions.h"
+
 
 void affichage_help(){
     printf("Utilisation :\n");
@@ -81,9 +85,24 @@ int main(int argc,char *argv[]){
         double bestL;
         double worstL;
 
+        // Allocation memoire de la chaine de caractere permActuelle et bestPermString affichee dans ctrl_c
+        bestPermString = malloc(512);
+        permActuelle = malloc(512);
         clock_t begin = clock();
+        void (*oldINT)(int) = signal(SIGINT, INThandler);
+
+        if (oldINT == SIG_ERR){
+            perror("Erreur assignement signal SIGINT\n");
+            return 3;
+        }
+
         tsp_bruteforce(g,calc_dist,WITHOUT_MATRICE,best,&bestL,worst,&worstL);
+        signal(SIGINT, oldINT);
+
         clock_t end = clock();
+        free(permActuelle);
+        free(bestPermString);
+
 
         double timeCPU = (double)(end-begin);
         char * bestString = toStringArray(*best);

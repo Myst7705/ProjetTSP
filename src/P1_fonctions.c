@@ -10,6 +10,13 @@
 #include "matrice.h"
 
 typedef double (*DistanceCalc)(const Graphe* g, DistanceFun f, int i, int j, Matrice m);
+void permToString(int* perm, int length, char* outString);
+
+// Declarations initiales
+double bestLen = 0.0;
+double worstLen = 0.0;
+char* permActuelle = NULL;
+char* bestPermString = NULL;
 
 
 /* 
@@ -114,25 +121,31 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
     }
     
     
-
-    double bestLen ;
-    double worstLen;
     
     /* évalue la permutation initiale (déjà triée) */
+    /* Et la convertit en string */
     
         double L0 = tour_length_from_perm(g, f, perm, N, dist, mat);
+
+        permToString(perm, N, permActuelle);
         bestLen = L0;
         worstLen = L0;
         memcpy(bestPerm, perm, (size_t)N * sizeof(int));
         memcpy(worstPerm, perm, (size_t)N * sizeof(int));
+        permToString(bestPerm, N, bestPermString);
     
 
     /* boucle d'exploration des permutations */
     while (next_permutation(perm, N)) {
+        permToString(perm, N, permActuelle);
         double L = tour_length_from_perm(g, f, perm, N, dist, mat);
         if (L < bestLen) {
             bestLen = L;
             memcpy(bestPerm, perm, (size_t)N * sizeof(int));
+            permToString(bestPerm, N, bestPermString);
+
+            fill_tournee_from_perm(g, bestPerm, N, outBest);
+            *outBestLen = bestLen;
         }
         if (L > worstLen) {
             worstLen = L;
@@ -149,4 +162,32 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
     fill_tournee_from_perm(g, worstPerm, N, outWorst);
     *outWorstLen = worstLen;
     return 0;
+}
+
+
+/**
+ * @brief Transforme une permutation (tableau d'entiers) en une string qui est passee en parametre
+ * @param perm  La permutation actuelle (qui est un tableau d'entiers)
+ * @param length Longueur de perm
+ * @param outString La chaine de caracteres dans laquelle on ecrit le resultat
+ * @return Void
+ */
+void permToString(int* perm, int length, char* outString){
+    if (!outString){
+        outString = NULL;
+        return;
+    }
+
+    outString[0] = '\0';
+    strcat(outString,"[");
+
+    for (int i = 0; i < length; i++){
+        char tmp[10];
+        sprintf(tmp, "%d", perm[i]);
+        strcat(outString, tmp);
+        if (i < length - 1){
+            strcat(outString, ",");
+        }
+    }
+    strcat(outString, "]");
 }

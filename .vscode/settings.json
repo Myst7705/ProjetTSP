@@ -1,6 +1,12 @@
 {
     "files.associations": {
         "ctype.h": "c",
-        "p1_fonctions.h": "c"
+        "p1_fonctions.h": "c",
+        "time.h": "c",
+        "stdbool.h": "c",
+        "main.h": "c",
+        "matrice.h": "c",
+        "sstream": "c",
+        "ctrl_c.h": "c"
     }
 }
