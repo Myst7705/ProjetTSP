@@ -73,7 +73,7 @@ def tests_instances_list(instances_file,methods):
 #filename = "burma14.tsp"
 filename = "att48.tsp" #
 path = "../bin/" # adaptez à votre cas
-code = "tsp" # nom du programme C
+code = "test" # nom du programme C
 methods = ["-c","bf"]#"bf","gadpx","nn","rw","2optnn","2optrw","ga 10000 0.10 100",
 
 #test_instance(filename,methods) # pour un seul appel

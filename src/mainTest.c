@@ -8,6 +8,11 @@
 #include "ctrl_c.h"
 #include "P1_fonctions.h"
 
+/*
+* C'est fonction d'affichage ne fonction pas avec le code de python 
+* car le code python va prendre le print dans le terminal pour le parse
+* pour le comparer avec les resultats de python.
+*/
 
 int main(int argc,char *argv[]){
     if (argc ==2)
@@ -57,10 +62,10 @@ int main(int argc,char *argv[]){
     {
         double resCanonicalTurn = calcul_poids_tournee(t,calc_dist);
         char * turnString = toStringArray(*t);
-        
-        affichageResultat(gr,turnString,resCanonicalTurn,0.0,chRead);
+        printf("Tour %s %s %f %d %s\n", gr->nom, "canonical", 0.0,(int)resCanonicalTurn, turnString);
         free(turnString);
         detruireTournee(t);
+
     }else if(strcmp(chRead,"bf")==0){ //BRUTE FORCE
         Tournee* best = createTourneCanonique(gr);
         Tournee* worst = createTourneCanonique(gr);
@@ -78,7 +83,7 @@ int main(int argc,char *argv[]){
             return 3;
         }
         clock_t begin = clock();
-        int returnBruteForce = tsp_bruteforce(gr,calc_dist,WITH_MATRICE,best,&bestL,worst,&worstL);
+        int returnBruteForce = tsp_bruteforce(gr,calc_dist,WITHOUT_MATRICE,best,&bestL,worst,&worstL);
         clock_t end = clock();
         if (returnBruteForce == -1){
             free_graphe(gr);
@@ -98,9 +103,9 @@ int main(int argc,char *argv[]){
         double timeCPU = (double)(end-begin);
         char * bestString = toStringArray(*best);
         char * worstString = toStringArray(*worst);
-
-        affichageResultat(gr,bestString,bestLen,timeCPU,chRead);
-        //affichageResultat(gr,bestString,bestLen,timeCPU,chRead);
+        
+        printf("Tour %s %s %f %d %s\n", gr->nom, "bf", timeCPU,(int)bestL, bestString);
+        printf("Tour %s %s %f %d %s\n", gr->nom, "bf", timeCPU,(int)worstL, worstString);
 
         free(bestString);
         free(worstString);

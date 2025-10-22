@@ -1,0 +1,60 @@
+Lecture fichier : ../test/att5.tsp
+NAME: att5
+COMMENT: 5 premiers de att48)+0
+TYPE: TSP
+DIMENSION: 5
+EDGE_WEIGHT_TYPE: ATT
+NODE_COORD_SECTION:
+1 6734 1453
+2 2233 10
+3 5530 1424
+4 401 841
+5 3082 1644
+EOF
+distance ATT
+Longueur du tour canonique (tsplib95 built in) = 6306
+
+
+Instance ; algo ; long (C) ; long (Python) ; temps ; tour ; valid ; mêmes longueurs
+att5 ; canonical ; 6306 ; 6306 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; True
+att5 ; bf ; 4177 ; 4177 ; 274.0 ; [1, 2, 4, 5, 3] ; True ; True
+Lecture fichier : ../test/burma5.tsp
+NAME: burma5
+COMMENT: 5-Staedte in Burma (Zaw Win)
+TYPE: TSP
+DIMENSION: 5
+EDGE_WEIGHT_TYPE: GEO
+NODE_COORD_SECTION:
+1 16.47 96.1
+2 16.47 94.44
+3 20.09 92.54
+4 22.39 93.37
+5 25.23 97.24
+EOF
+distance géométrique
+Longueur du tour canonique (tsplib95 built in) = 2321
+
+
+Instance ; algo ; long (C) ; long (Python) ; temps ; tour ; valid ; mêmes longueurs
+burma5 ; canonical ; 2321 ; 2321 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; True
+burma5 ; bf ; 2321 ; 2321 ; 367.0 ; [1, 2, 3, 4, 5] ; True ; True
+Lecture fichier : ../test/berlin5.tsp
+NAME: berlin5
+COMMENT: 5 locations in Berlin (Groetschel)
+TYPE: TSP
+DIMENSION: 5
+EDGE_WEIGHT_TYPE: EUC_2D
+NODE_COORD_SECTION:
+1 565.0 575.0
+2 25.0 185.0
+3 345.0 750.0
+4 945.0 685.0
+5 845.0 655.0
+EOF
+distance euclidienne
+Longueur du tour canonique (tsplib95 built in) = 2314
+
+
+Instance ; algo ; long (C) ; long (Python) ; temps ; tour ; valid ; mêmes longueurs
+berlin5 ; canonical ; 2314 ; 2314.5526975124208 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; False
+berlin5 ; bf ; 2314 ; 2314.5526975124208 ; 378.0 ; [1, 2, 3, 4, 5] ; True ; False

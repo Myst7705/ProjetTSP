@@ -1,36 +1,47 @@
-# Compiler and flags 
-CC = gcc 
-CFLAGS = -std=gnu11 -Wall 
+#Compiler and flags 
+CC = gcc
+CFLAGS = -std=gnu11 -Wall
 LDLIBS = -lpthread -lm
 
-# Directories 
+#Directories 
 SRCDIR = src
 OBJDIR = obj
 BINDIR = bin
 
-# Binaries
+#Binaries
 TSP = $(BINDIR)/tsp
+TEST = $(BINDIR)/test
 
-# Common 
+#Source files
 SRC = $(wildcard $(SRCDIR)/*.c)
-OBJ_COMMON = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
+#Object files
+OBJ_ALL = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-# Link rules
-$(TSP): $(OBJ_COMMON)
-	$(CC) -o $(TSP) $(OBJ_COMMON) $(LDLIBS)
+#Objects for the differents executables
+OBJ_TSP = $(filter-out $(OBJDIR)/mainTest.o, $(OBJ_ALL))
+OBJ_TEST = $(filter-out $(OBJDIR)/main.o, $(OBJ_ALL))
 
-# Compile rules
-# '%' matches filename
-# $@  for the pattern-matched target
-# $<  for the pattern-matched dependency
+all: dirs $(TSP) $(TEST)
+
+# Build demo binary
+$(TSP): $(OBJ_TSP)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
+
+# Build test binary
+$(TEST): $(OBJ_TEST)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
+
+# Compile rule
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
+# Create directories
 dirs:
 	@mkdir -p $(OBJDIR) $(BINDIR)
 
-# Housekeeping
+# Clean
 clean:
 	rm -f $(OBJDIR)/*.o
-	rm -f $(BINDIR)/* 
+	rm -f $(BINDIR)/*
