@@ -104,6 +104,7 @@ int main(int argc,char *argv[]){
             detruireTournee(worst);
             free(permActuelle);
             free(bestPermString);
+            detruireTournee(t); // Test
             exit(0);
         }
         signal(SIGINT, oldINT);
@@ -113,6 +114,7 @@ int main(int argc,char *argv[]){
         
         free(permActuelle);
         free(bestPermString);
+        detruireTournee(t); // Test
 
 
         int timeCPU = (int)(end-begin);
@@ -120,10 +122,17 @@ int main(int argc,char *argv[]){
         char * worstString = toStringArray(*worst);
         printf("Tour %s %s %d %f %s\n", gr->nom, "bf", timeCPU, bestL, bestString);
         printf("Tour %s %s %d %f %s\n", gr->nom, "bf", timeCPU, worstL, worstString);
+
+        free(bestString);
+        free(worstString);
+        detruireTournee(best);
+        detruireTournee(worst);
     }else{
         return 1;
     }
 
     free_graphe(gr);
+    
+    
     return 0;
 }
