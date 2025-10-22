@@ -166,10 +166,16 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
         sigpending(&pending);
         if (sigismember(&pending, SIGINT)) {
             signal(SIGINT, INThandler);
+            
             // Pseudo resultat retour de INThandler, grace a une variable globale (Oscar <3)
-            if (returnHandler == -1){ 
+            printf("On a recu du courrier\n");
+            
+            
+        }
+
+        if (returnHandler == -1){ 
+                printf("On a recu y\n");
                 return -1;
-            }
         }
     }
 

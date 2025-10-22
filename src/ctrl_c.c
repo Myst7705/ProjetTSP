@@ -30,5 +30,5 @@ void  INThandler(int sig)
      }
 
      int tmp;
-     while ((tmp = getchar()) != EOF && tmp != '\n') { }
+     while ((tmp = getchar()) != EOF && tmp != '\n') { fflush(stdout); }
 }
