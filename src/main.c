@@ -51,19 +51,19 @@ int main(int argc,char *argv[]){
     char * file_name = argv[2];
 
     //CREATION DE L'INSTANCE LUE
-    Graphe * g = read_TSPLIB(file_name);
-    if (!g){
+    Graphe* gr = read_TSPLIB(file_name);
+    if (!gr){
         return 2;
     }
     
-    Tournee * t = createTourneCanonique(g);
+    Tournee * t = createTourneCanonique(gr);
     
     // INIT CALCUL DE FONCTION DE CALCUL DE BASE 
     DistanceFun calc_dist = calc_dist_att;
-    if (strcmp(g->type_edge,"GEO")==0)
+    if (strcmp(gr->type_edge,"GEO")==0)
     {
         calc_dist = calc_dist_geo;
-    }else if(strcmp(g->type_edge,"EUC_2D")==0){ 
+    }else if(strcmp(gr->type_edge,"EUC_2D")==0){ 
         calc_dist = calc_dist_eucl2d;
     }
     
@@ -75,13 +75,13 @@ int main(int argc,char *argv[]){
     {
         double resCanonicalTurn = calcul_poids_tournee(t,calc_dist);
         char * turnString = toStringArray(*t);
-        printf("Tour %s %s %f %f %s\n", g->nom, "canonical", 0.0, resCanonicalTurn, turnString);
+        printf("Tour %s %s %f %f %s\n", gr->nom, "canonical", 0.0, resCanonicalTurn, turnString);
         //affichage(g,turnString,resCanonicalTurn,0.0,chRead);
         free(turnString);
         detruireTournee(t);
     }else if(strcmp(chRead,"bf")==0){ //BRUTE FORCE
-        Tournee * best = createTourneCanonique(g);
-        Tournee * worst = createTourneCanonique(g);
+        Tournee* best = createTourneCanonique(gr);
+        Tournee* worst = createTourneCanonique(gr);
         double bestL;
         double worstL;
 
@@ -96,9 +96,19 @@ int main(int argc,char *argv[]){
             return 3;
         }
         clock_t begin = clock();
-        tsp_bruteforce(g,calc_dist,WITHOUT_MATRICE,best,&bestL,worst,&worstL);
+        int returnBruteForce = tsp_bruteforce(gr,calc_dist,WITHOUT_MATRICE,best,&bestL,worst,&worstL);
         clock_t end = clock();
+        if (returnBruteForce == -1){
+            free_graphe(gr);
+            detruireTournee(best);
+            detruireTournee(worst);
+            free(permActuelle);
+            free(bestPermString);
+            exit(0);
+        }
         signal(SIGINT, oldINT);
+
+        
 
         
         free(permActuelle);
@@ -108,12 +118,12 @@ int main(int argc,char *argv[]){
         int timeCPU = (int)(end-begin);
         char * bestString = toStringArray(*best);
         char * worstString = toStringArray(*worst);
-        printf("Tour %s %s %d %f %s\n", g->nom, "bf", timeCPU, bestL, bestString);
-        printf("Tour %s %s %d %f %s\n", g->nom, "bf", timeCPU, worstL, worstString);
+        printf("Tour %s %s %d %f %s\n", gr->nom, "bf", timeCPU, bestL, bestString);
+        printf("Tour %s %s %d %f %s\n", gr->nom, "bf", timeCPU, worstL, worstString);
     }else{
         return 1;
     }
 
-    free_graphe(g);
+    free_graphe(gr);
     return 0;
 }

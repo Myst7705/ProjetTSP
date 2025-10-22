@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
-#include "struct.h"
-#include "P1_fonctions.h"
 #include "lectureTSPLIB.h"
+
+int returnHandler = 0;
 
 void  INThandler(int sig)
 {
@@ -22,7 +22,8 @@ void  INThandler(int sig)
      c = getchar();
      if (c == 'y' || c == 'Y'){
        // actions
-       exit(0);
+       returnHandler = -1;
+       return;
      }
      else{
           signal(SIGINT, INThandler);
