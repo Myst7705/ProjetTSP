@@ -8,14 +8,18 @@
 #include "ctrl_c.h"
 #include "P1_fonctions.h"
 
-
-int main(int argc,char *argv[]){
-    if (argc ==2)
+int test_entree(int argc, char *argv[]){
+    if (argc <2)
+    {
+        affichage_erreur(); 
+        return 1;
+    }
+    else if (argc ==2)
     {
         if (strcmp(argv[1],"-h")==0)
         {  
             affichage_help();
-            return 0;
+            return 1;
         }else{
             affichage_erreur();
             return 1; 
@@ -24,12 +28,20 @@ int main(int argc,char *argv[]){
     {
         affichage_erreur();
         return 1;
-    }else if(argc == 5 && strcmp(argv[4],"bf")!=0){
+    }else if (argc == 5 && (strcmp(argv[3], "-m") != 0 || strcmp(argv[4], "bf") != 0)) {
         affichage_erreur();
         return 1;
     }
-     
+    return 0; 
+}
 
+int main(int argc,char *argv[]){
+    
+    if (test_entree(argc,argv)==1)
+    {
+        return 1;
+    }
+    
     char * file_name = argv[2];
 
     //CREATION DE L'INSTANCE LUE

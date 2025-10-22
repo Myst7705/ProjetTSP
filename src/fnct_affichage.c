@@ -4,15 +4,18 @@
 
 void affichage_help(){
     printf("Utilisation :\n");
-    printf("> %s./bin/tsp -f test/FICHIER -c||-m [bf] %s: pour faire fonctionner le code\n",GREEN,NORMAL);
     printf("> %s./bin/tsp -h %s: pour savoir comment utiliser le code\n",GREEN,NORMAL);
-    printf("> %ssource venv/bin/activate %s: a activer dans le repertoire python, elle va nous permettre de faire fonctionner le sous-environnement python \n",GREEN,NORMAL);
+    printf("> %s./bin/tsp -f test/FICHIER -c %s: pour calculer la distance d'une tournee cannonique\n",GREEN,NORMAL);
+    printf("> %s./bin/tsp -f test/FICHIER -m [bf] %s: pour calculer la distance d'une tournee avec des algorithmes differents\n",GREEN,NORMAL);
+    printf("> Les fichiers dans test sont : %satt5.tsp , att10.tsp , att15.tsp , berlin5.tsp , berlin52.tsp , burma14.tsp et burma5.tsp%s\n",GREEN,NORMAL);
 }
 
 void affichage_erreur(){
     printf("Utilisation :\n");
-    printf("> %s./bin/tsp -f test/FICHIER -c||-m [bf] %s: pour faire fonctionner le code\n",RED,NORMAL);
     printf("> %s./bin/tsp -h %s: pour savoir comment utiliser le code\n",RED,NORMAL);
+    printf("> %s./bin/tsp -f test/FICHIER -c %s: pour calculer la distance d'une tournee cannonique\n",RED,NORMAL);
+    printf("> %s./bin/tsp -f test/FICHIER -m [bf] %s: pour calculer la distance d'une tournee avec des algorithmes differents\n",RED,NORMAL);
+    printf("> Les fichiers dans test sont : %satt5.tsp , att10.tsp , att15.tsp , berlin5.tsp , berlin52.tsp , burma14.tsp et burma5.tsp%s\n",GREEN,NORMAL);
 }
 
 void affichageResultat(Graphe * g,char * tourneString,double resultat_calc,double temps,char * methode_calc){

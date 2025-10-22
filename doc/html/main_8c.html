@@ -75,124 +75,40 @@ $(function() {
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ctrl__c_8h_source.html">ctrl_c.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="P1__fonctions_8h_source.html">P1_fonctions.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c__incl.png" border="0" usemap="#asrc_2main_8c" alt=""/></div>
 <map name="asrc_2main_8c" id="asrc_2main_8c">
-<area shape="rect" title=" " alt="" coords="225,5,314,32"/>
-<area shape="rect" href="main_8h.html" title=" " alt="" coords="96,80,163,107"/>
-<area shape="rect" title=" " alt="" coords="187,80,258,107"/>
-<area shape="rect" title=" " alt="" coords="283,80,349,107"/>
-<area shape="rect" title=" " alt="" coords="374,80,445,107"/>
-<area shape="rect" href="struct_8h.html" title=" " alt="" coords="94,229,165,256"/>
-<area shape="rect" href="matrice_8h.html" title=" " alt="" coords="23,155,107,181"/>
-<area shape="rect" href="lectureTSPLIB_8h.html" title=" " alt="" coords="132,155,255,181"/>
-<area shape="rect" href="calc__distance_8h.html" title=" " alt="" coords="279,155,401,181"/>
+<area shape="rect" title=" " alt="" coords="573,5,662,32"/>
+<area shape="rect" href="main_8h.html" title=" " alt="" coords="185,80,252,107"/>
+<area shape="rect" title=" " alt="" coords="277,80,347,107"/>
+<area shape="rect" title=" " alt="" coords="372,80,439,107"/>
+<area shape="rect" title=" " alt="" coords="463,80,534,107"/>
+<area shape="rect" title=" " alt="" coords="699,155,781,181"/>
+<area shape="rect" title=" " alt="" coords="700,80,764,107"/>
+<area shape="rect" title=" " alt="" coords="789,80,862,107"/>
+<area shape="rect" href="ctrl__c_8h.html" title=" " alt="" coords="879,155,948,181"/>
+<area shape="rect" href="P1__fonctions_8h.html" title=" " alt="" coords="559,80,676,107"/>
+<area shape="rect" href="struct_8h.html" title=" " alt="" coords="429,229,499,256"/>
+<area shape="rect" href="matrice_8h.html" title=" " alt="" coords="502,155,586,181"/>
+<area shape="rect" href="lectureTSPLIB_8h.html" title=" " alt="" coords="5,155,128,181"/>
+<area shape="rect" href="calc__distance_8h.html" title=" " alt="" coords="152,155,275,181"/>
+<area shape="rect" href="fnct__affichage_8h.html" title=" " alt="" coords="299,155,426,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1d0f8f3272ce4fe83344792a19375ff5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1d0f8f3272ce4fe83344792a19375ff5">affichage_help</a> ()</td></tr>
-<tr class="separator:a1d0f8f3272ce4fe83344792a19375ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedb2b33ef2b081e69048f321459653f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aedb2b33ef2b081e69048f321459653f4">affichage_erreur</a> ()</td></tr>
-<tr class="separator:aedb2b33ef2b081e69048f321459653f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0bbe2b7d40b6f299d4e71cb1187fcfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac0bbe2b7d40b6f299d4e71cb1187fcfa">affichage</a> (<a class="el" href="structGraphe.html">Graphe</a> *g, char *tourneString, double resultat_calc, double temps, char *methode_calc)</td></tr>
-<tr class="separator:ac0bbe2b7d40b6f299d4e71cb1187fcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac0bbe2b7d40b6f299d4e71cb1187fcfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0bbe2b7d40b6f299d4e71cb1187fcfa">&#9670;&nbsp;</a></span>affichage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void affichage </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structGraphe.html">Graphe</a> *&#160;</td>
-          <td class="paramname"><em>g</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>tourneString</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>resultat_calc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>temps</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>methode_calc</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="main_8c_ac0bbe2b7d40b6f299d4e71cb1187fcfa_icgraph.png" border="0" usemap="#amain_8c_ac0bbe2b7d40b6f299d4e71cb1187fcfa_icgraph" alt=""/></div>
-<map name="amain_8c_ac0bbe2b7d40b6f299d4e71cb1187fcfa_icgraph" id="amain_8c_ac0bbe2b7d40b6f299d4e71cb1187fcfa_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,191,32"/>
-<area shape="rect" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="aedb2b33ef2b081e69048f321459653f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedb2b33ef2b081e69048f321459653f4">&#9670;&nbsp;</a></span>affichage_erreur()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void affichage_erreur </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1d0f8f3272ce4fe83344792a19375ff5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d0f8f3272ce4fe83344792a19375ff5">&#9670;&nbsp;</a></span>affichage_help()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void affichage_help </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -223,17 +139,31 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#amain_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
 <map name="amain_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="amain_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
-<area shape="rect" title=" " alt="" coords="5,233,60,260"/>
-<area shape="rect" href="main_8c.html#ac0bbe2b7d40b6f299d4e71cb1187fcfa" title=" " alt="" coords="146,5,229,32"/>
-<area shape="rect" href="calc__distance_8c.html#ac6b7da1dc297b93e5316b68f0401d39d" title="Calcul la distance ATT entre points." alt="" coords="135,56,239,83"/>
-<area shape="rect" href="calc__distance_8c.html#a9535028b3a5d93b4a5d515e577d153a0" title="Calcul la distance euclidienne en 2D entre points." alt="" coords="123,107,252,133"/>
-<area shape="rect" href="calc__distance_8c.html#a7084007a4746b0ec66964145fa2a6029" title="Calcul la distance geographique entre points." alt="" coords="132,157,243,184"/>
-<area shape="rect" href="calc__distance_8c.html#a941a8f33326e911c918d939714e6c82f" title="Calcul la distance totale d&#39;une tournee." alt="" coords="108,208,267,235"/>
-<area shape="rect" href="lectureTSPLIB_8c.html#a8cfebd1510e72983eb5bea4f13ddb308" title=" " alt="" coords="134,259,241,285"/>
-<area shape="rect" href="lectureTSPLIB_8c.html#a3a73abb56d66138429ed41b21570f644" title=" " alt="" coords="125,309,249,336"/>
-<area shape="rect" href="lectureTSPLIB_8c.html#a9f9e3c694319d74371adca5948038e4c" title="Libère un graphe allouée dynamiquement." alt="" coords="315,385,415,412"/>
-<area shape="rect" href="lectureTSPLIB_8c.html#a1a174a6a279fe4ec3f75915c03e935cf" title="Lit un fichier TSPLIB et crée un Graphe." alt="" coords="136,411,239,437"/>
-<area shape="rect" href="lectureTSPLIB_8c.html#a47a4df6ceebd46f6e9760ac6b38d3459" title=" " alt="" coords="133,461,241,488"/>
+<area shape="rect" title=" " alt="" coords="5,335,60,361"/>
+<area shape="rect" href="fnct__affichage_8c.html#aedb2b33ef2b081e69048f321459653f4" title="Fonction d&#39;affichage d&#39;aide lorsqu&#39;il y a une erreur d&#39;utilisation du programme." alt="" coords="131,5,259,32"/>
+<area shape="rect" href="fnct__affichage_8c.html#a1d0f8f3272ce4fe83344792a19375ff5" title="Fonction d&#39;affichage d&#39;aide pour l&#39;utilisation du programme." alt="" coords="137,56,254,83"/>
+<area shape="rect" href="fnct__affichage_8c.html#a1eadb71bcc688effcb9ef828dc8c0e9f" title="Fonction d&#39;affichage des resultats." alt="" coords="127,107,263,133"/>
+<area shape="rect" href="calc__distance_8c.html#ac6b7da1dc297b93e5316b68f0401d39d" title="Calcul la distance ATT entre points." alt="" coords="143,157,247,184"/>
+<area shape="rect" href="calc__distance_8c.html#a9535028b3a5d93b4a5d515e577d153a0" title="Calcul la distance euclidienne en 2D entre points." alt="" coords="131,208,260,235"/>
+<area shape="rect" href="calc__distance_8c.html#a7084007a4746b0ec66964145fa2a6029" title="Calcul la distance geographique entre points." alt="" coords="140,259,251,285"/>
+<area shape="rect" href="calc__distance_8c.html#a941a8f33326e911c918d939714e6c82f" title="Calcul la distance totale d&#39;une tournee." alt="" coords="116,309,275,336"/>
+<area shape="rect" href="lectureTSPLIB_8c.html#ada80ce156789590ff55aa2d2b602a403" title="Creer dynamiquement et renvoie la tournee canonique tu graphe passe en parametre." alt="" coords="108,360,283,387"/>
+<area shape="rect" href="lectureTSPLIB_8c.html#a3a73abb56d66138429ed41b21570f644" title="Fonction liberant l&#39;espace memoire de la Tournee donnee en parametre." alt="" coords="133,411,257,437"/>
+<area shape="rect" href="lectureTSPLIB_8c.html#a9f9e3c694319d74371adca5948038e4c" title="Libère un graphe allouée dynamiquement." alt="" coords="377,475,477,501"/>
+<area shape="rect" href="ctrl__c_8c.html#a6a3869251603ae4e569abadbd7dab11c" title="Gere le signal du controle&#45;C." alt="" coords="380,537,473,564"/>
+<area shape="rect" href="lectureTSPLIB_8c.html#a1a174a6a279fe4ec3f75915c03e935cf" title="Lit un fichier TSPLIB et crée un Graphe." alt="" coords="144,512,247,539"/>
+<area shape="rect" href="lectureTSPLIB_8c.html#a47a4df6ceebd46f6e9760ac6b38d3459" title="Convertit une tournee passee en parametre en chaine de caracteres formatee." alt="" coords="141,613,249,640"/>
+<area shape="rect" href="P1__fonctions_8c.html#a31c3abe8a7a1dba481e09eeff95a334a" title="Fonction appliquant l&#39;algorithme brute force au graphe passee en parametre et retournant la meilleure..." alt="" coords="137,689,253,716"/>
+<area shape="rect" href="matrice_8c.html#a663bbcfc009ba3bc74a2365df3d8b2c1" title="Creer une matrice en utilisant une graphe." alt="" coords="331,588,523,615"/>
+<area shape="rect" href="P1__fonctions_8c.html#a64de998d1f9805d140a28396b0d6b434" title=" " alt="" coords="396,639,457,665"/>
+<area shape="rect" href="P1__fonctions_8c.html#ac40f991f1b04df62aeb8cf28567f459b" title=" " alt="" coords="379,689,474,716"/>
+<area shape="rect" href="P1__fonctions_8c.html#ab55342fc4f408ac45acbb720cac0c54c" title=" " alt="" coords="339,740,514,767"/>
+<area shape="rect" href="P1__fonctions_8c.html#aff899d842076b541dbd73b03bfa32d51" title=" " alt="" coords="357,791,496,817"/>
+<area shape="rect" href="P1__fonctions_8c.html#a686b473f131899518e7e686250c21fbf" title="Transforme une permutation (tableau d&#39;entiers) en une string qui est passee en parametre." alt="" coords="373,841,481,868"/>
+<area shape="rect" href="P1__fonctions_8c.html#a337119eece61f49a77bd5c3490d0c420" title=" " alt="" coords="339,892,514,919"/>
+<area shape="rect" href="matrice_8c.html#a6b166768f75cb194579c8ca6c6c285e9" title="Ajouter un point a une matrice." alt="" coords="571,588,713,615"/>
+<area shape="rect" href="matrice_8c.html#a481576d3f075460eb19a693f9d8cc924" title="Creation d&#39;une nouvelle sous matrice." alt="" coords="761,588,879,615"/>
+<area shape="rect" href="matrice_8c.html#adca8dd6fa9a6344c509c7a0a4a3806b4" title="donne la distance entre 2 points de la matrice" alt="" coords="592,689,692,716"/>
 </map>
 </div>
 

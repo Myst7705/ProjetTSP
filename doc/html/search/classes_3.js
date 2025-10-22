@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['smatrice_60',['sMatrice',['../structsMatrice.html',1,'']]]
+  ['smatrice_84',['sMatrice',['../structsMatrice.html',1,'']]]
 ];

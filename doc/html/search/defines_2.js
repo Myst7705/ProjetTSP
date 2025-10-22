@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normal_111',['NORMAL',['../main_8h.html#a1291f416b069313021b519eea62d5bf1',1,'main.h']]]
+  ['line_5flen_156',['LINE_LEN',['../lectureTSPLIB_8c.html#a45db13d622cb21897aa934e5ad411c83',1,'lectureTSPLIB.c']]]
 ];

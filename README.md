@@ -13,10 +13,14 @@ Ce projet se base sur la problematique du "Travelling Saleman Probleme" ou TSP. 
 
 ## Utilisation 
 
-- ***make*** : dans le fichier de base (../ProjetTSP), va servir a creer l'exexutable du main.c
-- ***make clean*** : dans le fichier de base (../ProjectTSP), va servir a nettoyer les fichiers creer par le make
-- ***./bin/tsp -f <u> FICHIER </u> [-c,-bf]*** pour faire executer le programme. 
-- ***source venv/bin/activate*** pour activer le sous environnement python pour faire tester nos fonctions avec le code python
+- *** make *** : dans le fichier de base (../ProjetTSP), va servir a creer l'exexutable du main.c
+- *** make clean *** : dans le fichier de base (../ProjectTSP), va servir a nettoyer les fichiers creer par le make
+- *** ./bin/tsp -h *** : pour montrer comment utiliser ces algorithemes.
+- *** ./bin/tsp -f <u> FICHIER </u> -c *** : pour faire executer calculer la tournee canonique.
+- *** ./bin/tsp -f <u> FICHIER <u> -m [bf] *** : pour faire exectuer l'algorithme de bruteforce.
+
+Les fichiers de tests sont dans le repertoires tests pour l'instant ceux qui sont disponibltes sont : att5 , att10 , att15 , berlin5 , berlin52 , burma14 et burma5.
+
 ## Partie 0 
 
 La partie 0 concerne l'implementation des differents fonctions necessaires pour manipuler les fichiers de test et des fonctions de calculs de distance. 
