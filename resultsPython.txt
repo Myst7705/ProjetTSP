@@ -16,8 +16,8 @@ Longueur du tour canonique (tsplib95 built in) = 6306
 
 
 Instance ; algo ; long (C) ; long (Python) ; temps ; tour ; valid ; mêmes longueurs
-att5 ; canonical ; 6306 ; 6306 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; True
-att5 ; bf ; 4177 ; 4177 ; 274.0 ; [1, 2, 4, 5, 3] ; True ; True
+att5 ; -c ; 6306 ; 6306 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; True
+att5 ; bf ; 4177 ; 4177 ; 318.0 ; [1, 2, 4, 5, 3] ; True ; True
 Lecture fichier : ../test/burma5.tsp
 NAME: burma5
 COMMENT: 5-Staedte in Burma (Zaw Win)
@@ -36,8 +36,8 @@ Longueur du tour canonique (tsplib95 built in) = 2321
 
 
 Instance ; algo ; long (C) ; long (Python) ; temps ; tour ; valid ; mêmes longueurs
-burma5 ; canonical ; 2321 ; 2321 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; True
-burma5 ; bf ; 2321 ; 2321 ; 367.0 ; [1, 2, 3, 4, 5] ; True ; True
+burma5 ; -c ; 2321 ; 2321 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; True
+burma5 ; bf ; 2321 ; 2321 ; 343.0 ; [1, 2, 3, 4, 5] ; True ; True
 Lecture fichier : ../test/berlin5.tsp
 NAME: berlin5
 COMMENT: 5 locations in Berlin (Groetschel)
@@ -56,5 +56,5 @@ Longueur du tour canonique (tsplib95 built in) = 2314
 
 
 Instance ; algo ; long (C) ; long (Python) ; temps ; tour ; valid ; mêmes longueurs
-berlin5 ; canonical ; 2314 ; 2314.5526975124208 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; False
-berlin5 ; bf ; 2314 ; 2314.5526975124208 ; 378.0 ; [1, 2, 3, 4, 5] ; True ; False
+berlin5 ; -c ; 2314 ; 2314.5526975124208 ; 0.0 ; [1, 2, 3, 4, 5] ; True ; False
+berlin5 ; bf ; 2314 ; 2314.5526975124208 ; 411.0 ; [1, 2, 3, 4, 5] ; True ; False
