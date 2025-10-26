@@ -1,6 +1,6 @@
 #Compiler and flags 
 CC = gcc
-CFLAGS = -std=gnu11 -Wall
+CFLAGS = -std=gnu11 -Wall -Iinclude
 LDLIBS = -lpthread -lm
 
 #Directories 
