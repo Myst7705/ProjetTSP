@@ -8,6 +8,9 @@
 #define WITH_MATRICE 1
 #define WITHOUT_MATRICE 0
 
+extern Tournee* bestTourneeActuelle;
+extern Tournee* tourneeActuelle;
+
 
 /**
  * @brief Fonction appliquant l'algorithme brute force au graphe passee en parametre et retournant la meilleure/pire tournee et sa longueur

@@ -20,6 +20,8 @@ double bestLen = 0.0;
 double worstLen = 0.0;
 char* permActuelle = NULL;
 char* bestPermString = NULL;
+Tournee* bestTourneeActuelle = NULL;
+Tournee* tourneeActuelle = NULL;
 
 
 
@@ -134,6 +136,8 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
     memcpy(bestPerm, perm, (size_t)N * sizeof(int));
     memcpy(worstPerm, perm, (size_t)N * sizeof(int));
     permToString(bestPerm, N, bestPermString);
+    fill_tournee_from_perm(g, bestPerm, N, bestTourneeActuelle);
+    fill_tournee_from_perm(g, perm, N, tourneeActuelle);
     
 
     /* boucle d'exploration des permutations */
@@ -146,6 +150,7 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
         sigprocmask(SIG_BLOCK, &set, &oldset);
         
         permToString(perm, N, permActuelle);
+        fill_tournee_from_perm(g, perm, N, tourneeActuelle);
 
         double L = tour_length_from_perm(g, f, perm, N, dist, mat);
 
@@ -155,6 +160,7 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
             permToString(bestPerm, N, bestPermString);
 
             fill_tournee_from_perm(g, bestPerm, N, outBest);
+            fill_tournee_from_perm(g, bestPerm, N, bestTourneeActuelle);
             *outBestLen = bestLen;
         }
         if (L > worstLen) {
