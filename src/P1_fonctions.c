@@ -170,11 +170,11 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
             // Pseudo resultat retour de INThandler, grace a une variable globale (Oscar <3)
             printf("On a recu du courrier\n");
             
-            
         }
 
         if (returnHandler == -1){ 
                 printf("On a recu y\n");
+                freeMatrice(mat);
                 return -1;
         }
     }
@@ -186,6 +186,7 @@ int tsp_bruteforce(const Graphe* g, DistanceFun f, bool faire_matrice_distance ,
     /* Remplir outBest (allocation unique faite ici) */
     fill_tournee_from_perm(g, worstPerm, N, outWorst);
     *outWorstLen = worstLen;
+    freeMatrice(mat);
     return 0;
 }
 

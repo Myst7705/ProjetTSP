@@ -73,6 +73,7 @@ int main(int argc,char *argv[]){
         affichageResultat(gr,turnString,resCanonicalTurn,0.0,chRead);
         free(turnString);
         detruireTournee(t);
+        
     }else if(strcmp(chRead,"bf")==0){ //BRUTE FORCE
         Tournee* best = createTourneCanonique(gr);
         Tournee* worst = createTourneCanonique(gr);
