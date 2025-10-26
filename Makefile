@@ -4,7 +4,7 @@ CFLAGS = -std=gnu11 -Wall -Iinclude
 LDLIBS = -lpthread -lm
 
 #Directories 
-SRCDIR = src
+SRCDIR = src/algo
 OBJDIR = obj
 BINDIR = bin
 
