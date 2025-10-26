@@ -13,7 +13,8 @@ Graphe* tspInit(const char* fichierTSP);
 Tournee* tspBruteForce(Graphe* graphe);
 int tspGetNbPoints(Tournee* tournee);
 Point* tspGetPoints(Tournee* tournee);
-void tspFree(Graphe* graphe);
+void tspFreeGraphe(Graphe* graphe);
+void tspFreeTournee(Tournee* tournee);
 
 #ifdef __cplusplus
 }
